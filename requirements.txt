@@ -1,0 +1,4 @@
+matplotlib==3.0.3
+graphviz==0.8.4
+neat-python==0.92
+numpy==1.17.0
