@@ -1,0 +1,20 @@
+# SSH 配置文件
+# 将此内容添加到你的 ~/.ssh/config 文件中
+
+Host neuroevolution-dev
+    HostName localhost
+    Port 2222
+    User developer
+    PasswordAuthentication yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    IdentitiesOnly yes
+
+# 或者使用密钥认证（推荐）
+# Host neuroevolution-dev-key
+#     HostName localhost
+#     Port 2222
+#     User developer
+#     IdentityFile ~/.ssh/neuroevolution_dev_key
+#     StrictHostKeyChecking no
+#     UserKnownHostsFile /dev/null

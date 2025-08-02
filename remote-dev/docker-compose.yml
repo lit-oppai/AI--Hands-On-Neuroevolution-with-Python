@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  neuroevolution-dev:
+    build:
+      context: ..
+      dockerfile: remote-dev/Dockerfile
+    container_name: neuroevolution-remote-dev
+    ports:
+      - "2222:2222"     # SSH
+      - "8888:8888"     # Jupyter Notebook
+      - "6006:6006"     # TensorBoard
+    volumes:
+      - ..:/workspace:cached
+      - ~/.ssh:/home/developer/.ssh_host:ro
+    environment:
+      - PYTHONPATH=/workspace
+      - JUPYTER_ENABLE_LAB=yes
+    networks:
+      - neuroevolution-network
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+networks:
+  neuroevolution-network:
+    driver: bridge
