@@ -23,6 +23,7 @@ def eval_fitness(net):
     """
     Evaluates fitness of the genome that was used to generate 
     provided net
+    评估 过去被
     Arguments:
         net: The feed-forward neural network generated from genome
     Returns:
