@@ -1,26 +1,24 @@
-#FROM continuumio/miniconda3
-#LABEL authors="zhanghengxin"
-#
-#WORKDIR /app
-#
-#RUN  conda create -n py35  python=3.5 -y
-##    && conda activate py35 \
-##    && pip install --upgrade pip \
-##    && pip install -r requirements.txt
-#
-#RUN /bin/bash -c "source activate py35 && \
-#    pip install neat-python==0.92 matplotlib=3.0.3"
-#
-#COPY . /app
-#
-#CMD ["/bin/bash"]
-##ENTRYPOINT ["top", "-b"]
-
-
+# 优化的 Neuroevolution 开发环境 Dockerfile
+# 基于 Python 3.5.10，支持神经进化算法开发
 
 FROM ubuntu:18.04
 
-# 安装系统构建依赖
+# 元数据
+LABEL maintainer="zhanghengxin" \
+      description="Neuroevolution development environment with Python 3.5.10" \
+      version="1.0"
+
+# 环境变量
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONPATH=/app \
+    PATH=/usr/local/bin:$PATH
+
+# 清理 apt 缓存，减少镜像大小
+RUN rm -rf /var/lib/apt/lists/*
+
+# 安装系统构建依赖（合并 RUN 指令减少层数）
 RUN apt-get update && apt-get install -y \
     build-essential \
     wget \
@@ -38,39 +36,62 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libfreetype6-dev \
     pkg-config \
-    graphviz
+    graphviz \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
-# 构建 Python 3.5.10
+# 创建构建目录
 WORKDIR /usr/src
-RUN wget https://www.python.org/ftp/python/3.5.10/Python-3.5.10.tgz && \
-    tar xzf Python-3.5.10.tgz && \
-    cd Python-3.5.10 && \
-    ./configure --enable-optimizations && \
-    make -j$(nproc) && \
-    make altinstall
 
-# 确保使用 pip，升级到兼容版本
-RUN /usr/local/bin/python3.5 -m ensurepip && \
-    /usr/local/bin/python3.5 -m pip install --upgrade "pip==20.3.4" setuptools wheel
+# 下载并构建 Python 3.5.10（使用多阶段构建优化）
+RUN wget --no-check-certificate https://www.python.org/ftp/python/3.5.10/Python-3.5.10.tgz \
+    && tar xzf Python-3.5.10.tgz \
+    && cd Python-3.5.10 \
+    && ./configure --enable-optimizations --with-ensurepip=install \
+    && make -j$(nproc) \
+    && make altinstall \
+    && cd .. \
+    && rm -rf Python-3.5.10 Python-3.5.10.tgz
 
-## 安装 numpy **单独提前装**
-#RUN /usr/local/bin/python3.5 -m pip install "numpy==1.17.0"
-#
-## 再装 matplotlib
-#RUN /usr/local/bin/python3.5 -m pip install matplotlib==3.0.3 graphviz==0.8.4
-#
-## 安装 neat-python
-#RUN /usr/local/bin/python3.5 -m pip install "neat-python==0.92"
+# 升级 pip 并安装基础包
+RUN python3.5 -m ensurepip \
+    && python3.5 -m pip install --no-cache-dir --upgrade "pip==20.3.4" setuptools wheel
 
-COPY requirements.txt .
+# 创建应用用户（安全最佳实践）
+RUN groupadd -r developer && useradd -r -g developer developer \
+    && mkdir -p /app \
+    && chown -R developer:developer /app
 
-RUN /usr/local/bin/python3.5 -m pip install -r requirements.txt
+# 切换到应用用户
+USER developer
 
-RUN ln -s /usr/local/bin/python3.5 /usr/local/bin/python3
-
-# 项目代码目录
+# 设置工作目录
 WORKDIR /app
-COPY . /app
 
-# 启动交互
-CMD ["/usr/local/bin/python3.5"]
+# 复制依赖文件（利用 Docker 缓存）
+COPY --chown=developer:developer requirements.txt .
+
+# 安装 Python 依赖（使用 --no-cache-dir 减少镜像大小）
+RUN python3.5 -m pip install --no-cache-dir -r requirements.txt
+
+# 创建符号链接方便使用
+RUN ln -sf /usr/local/bin/python3.5 /usr/local/bin/python3
+
+# 复制应用代码（最后复制，最大化缓存利用）
+COPY --chown=developer:developer . .
+
+# 验证安装
+RUN python3.5 --version \
+    && python3.5 -c "import numpy; print(f'numpy: {numpy.__version__}')" \
+    && python3.5 -c "import matplotlib; print(f'matplotlib: {matplotlib.__version__}')" \
+    && python3.5 -c "import neat; print(f'neat-python: {neat.__version__}')"
+
+# 暴露端口（用于开发服务器）
+EXPOSE 8888 6006
+
+# 健康检查
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD python3.5 --version || exit 1
+
+# 默认命令
+CMD ["python3.5"]

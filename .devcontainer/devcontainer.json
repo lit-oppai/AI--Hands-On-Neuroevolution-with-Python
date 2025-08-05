@@ -1,9 +1,7 @@
 {
   "name": "Neuroevolution Python 3.5.10",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "neuroevolution",
   "customizations": {
     "vscode": {
       "settings": {

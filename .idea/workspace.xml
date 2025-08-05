@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28286009-7f37-4c8f-9566-ea511d6136ff" name="更改" comment="build: 添加 Dockerfile 和项目依赖&#10;&#10;- 新增 Dockerfile 用于构建项目环境&#10;- 添加 requirements.txt 列出项目依赖&#10;- 创建 Chapter3/exercise.ipynb 文件作为练习入口">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="28286009-7f37-4c8f-9566-ea511d6136ff" name="更改" comment="feat: 添加 Dockerfile 和项目依赖">
+      <change beforePath="$PROJECT_DIR$/.devcontainer/devcontainer.json" beforeDir="false" afterPath="$PROJECT_DIR$/.devcontainer/devcontainer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chapter3/xor_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter3/xor_experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,26 +51,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.xor_experiment.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "/home/zhx/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/zhanghengxin/Code/AI- Hands On Neuroevolution with Python",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.zhx_NEAT.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.未命名.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.cart_pole.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.xor_experiment.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/zhx/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zhanghengxin/Code/AI- Hands On Neuroevolution with Python&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" side_tool="true" />
@@ -77,21 +84,23 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33035713" />
-      <window_info id="Commit" order="1" weight="0.33035713" />
+      <window_info content_ui="combo" id="Project" order="0" />
+      <window_info active="true" id="Commit" order="1" visible="true" weight="0.33035713" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
-      <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="File Transfer" />
       <window_info anchor="bottom" id="HfCacheToolWindow" />
-      <window_info active="true" anchor="bottom" id="Services" order="0" sideWeight="0.60811836" side_tool="true" visible="true" weight="0.4994469" />
-      <window_info anchor="bottom" id="Version Control" order="1" />
-      <window_info anchor="bottom" id="Problems" order="2" />
-      <window_info anchor="bottom" id="Problems View" order="3" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="4" sideWeight="0.39188164" visible="true" weight="0.4994469" />
-      <window_info anchor="bottom" id="Python Packages" order="6" weight="0.1" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.1" />
+      <window_info anchor="bottom" id="Services" order="0" sideWeight="0.6999241" side_tool="true" weight="0.33019912" />
+      <window_info active="true" anchor="bottom" id="Debug" order="1" sideWeight="0.6999241" side_tool="true" visible="true" weight="0.4994469" />
+      <window_info anchor="bottom" id="Version Control" order="2" />
+      <window_info anchor="bottom" id="Problems" order="3" />
+      <window_info anchor="bottom" id="Problems View" order="4" sideWeight="0.5003793" weight="0.33019912" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.3000759" weight="0.33019912" />
+      <window_info anchor="bottom" id="Python Packages" order="6" sideWeight="0.5003793" weight="0.33019912" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.27807283" weight="0.33019912" />
+      <window_info anchor="bottom" id="TODO" order="8" sideWeight="0.5003793" weight="0.33019912" />
+      <window_info active="true" anchor="bottom" id="Run" order="9" visible="true" weight="0.33019912" />
       <window_info anchor="right" id="Endpoints" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="SciView" />
@@ -104,6 +113,13 @@
       <window_info anchor="right" id="Plots" order="5" weight="0.1" />
     </layout>
   </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="docker-deploy" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager" selected="Docker.zhx_NEAT">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="AI- Hands On Neuroevolution with Python" />
@@ -114,35 +130,42 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Remote Python 3.5.10 Docker (zhx_neat)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="DockerContainerSettingsRunConfigurationExtension">
+        <option name="envVars">
+          <list />
+        </option>
+        <option name="extraHosts">
+          <list />
+        </option>
+        <option name="links">
+          <list />
+        </option>
+        <option name="networkDisabled" value="false" />
+        <option name="networkMode" value="bridge" />
+        <option name="portBindings">
+          <list />
+        </option>
+        <option name="publishAllPorts" value="false" />
+        <option name="runCliOptions" value="--entrypoint= --rm" />
+        <option name="version" value="2" />
+        <option name="volumeBindings">
+          <list>
+            <DockerVolumeBindingImpl>
+              <option name="containerPath" value="/opt/project" />
+              <option name="editable" value="true" />
+              <option name="hostPath" value="$PROJECT_DIR$" />
+              <option name="readOnly" value="false" />
+            </DockerVolumeBindingImpl>
+          </list>
+        </option>
+      </EXTENSION>
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="xor_experiment" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="AI- Hands On Neuroevolution with Python" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Chapter3" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Chapter3/xor_experiment.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -154,17 +177,17 @@
     <configuration name="zhx_NEAT" type="docker-deploy" factoryName="dockerfile" server-name="docker-default">
       <deployment type="dockerfile">
         <settings>
+          <option name="imageTag" value="zhx_neat" />
           <option name="containerName" value="zhx_Neuroevolution_lab" />
           <option name="sourceFilePath" value="Dockerfile" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.xor_experiment" />
-      </list>
-    </recent_temporary>
+    <list>
+      <item itemvalue="Docker.zhx_NEAT" />
+      <item itemvalue="Python.main" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -196,7 +219,9 @@
       <workItem from="1752401127509" duration="8926000" />
       <workItem from="1753713760049" duration="3008000" />
       <workItem from="1754114307885" duration="87000" />
-      <workItem from="1754114454182" duration="6902000" />
+      <workItem from="1754114454182" duration="18734000" />
+      <workItem from="1754225717720" duration="103000" />
+      <workItem from="1754409020547" duration="857000" />
     </task>
     <task id="LOCAL-00001" summary="build: 添加 Dockerfile 和项目依赖&#10;&#10;- 新增 Dockerfile 用于构建项目环境&#10;- 添加 requirements.txt 列出项目依赖&#10;- 创建 Chapter3/exercise.ipynb 文件作为练习入口">
       <option name="closed" value="true" />
@@ -206,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750594415932</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: 添加 Dockerfile 和项目依赖">
+      <option name="closed" value="true" />
+      <created>1754127080972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754127080972</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,9 +258,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="build: 添加 Dockerfile 和项目依赖&#10;&#10;- 新增 Dockerfile 用于构建项目环境&#10;- 添加 requirements.txt 列出项目依赖&#10;- 创建 Chapter3/exercise.ipynb 文件作为练习入口" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: 添加 Dockerfile 和项目依赖&#10;&#10;- 新增 Dockerfile 用于构建项目环境&#10;- 添加 requirements.txt 列出项目依赖&#10;- 创建 Chapter3/exercise.ipynb 文件作为练习入口" />
+    <MESSAGE value="feat: 添加 Dockerfile 和项目依赖" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 添加 Dockerfile 和项目依赖" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AI__Hands_On_Neuroevolution_with_Python$xor_experiment.coverage" NAME="xor_experiment 覆盖结果" MODIFIED="1749865415092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Chapter3" />
+    <SUITE FILE_PATH="coverage/AI__Hands_On_Neuroevolution_with_Python$xor_experiment.coverage" NAME="xor_experiment 覆盖结果" MODIFIED="1754139797688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Chapter3" />
   </component>
 </project>
