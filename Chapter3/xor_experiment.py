@@ -23,31 +23,38 @@ def eval_fitness(net):
     """
     Evaluates fitness of the genome that was used to generate 
     provided net
-    评估 过去被
+    评估 被用来提供生成网络基因的拟合度
+    评估 给定网络生成的基因组的适应度
     Arguments:
         net: The feed-forward neural network generated from genome
+        由基因组生成的 正反馈（前馈）进化网络
     Returns:
         The fitness score - the higher score the means the better 
         fit organism. Maximal score: 16.0
+        拟合度分数 越高意味着更适合的个体，最大分数为16
     """
     error_sum = 0.0
     for xi, xo in zip(xor_inputs, xor_outputs):
         output = net.activate(xi)
         error_sum += abs(output[0] - xo[0])
     # Calculate amplified fitness
+    # 计算放大拟合度
     fitness = (4 - error_sum) ** 2
     return fitness
 
 def eval_genomes(genomes, config):
     """
     The function to evaluate the fitness of each genome in 
-    the genomes list. 
+    the genomes list.
+    评价基因组列表中每个基因组的拟合度
     The provided configuration is used to create feed-forward 
     neural network from each genome and after that created
     the neural network evaluated in its ability to solve
     XOR problem. As a result of this function execution, the
     the fitness score of each genome updated to the newly
     evaluated one.
+    提供的配置用来创建每个基因组的正向反馈网络，并且随后，评价他解决xor问题的能力。
+    每个基因组的拟合度评分，更新到最新的那个值
     Arguments:
         genomes: The list of genomes from population in the 
                 current generation
