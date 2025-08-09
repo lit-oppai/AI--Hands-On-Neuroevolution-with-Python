@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  neuroevolution:
+    build:
+      context: .
+      dockerfile: Dockerfile.fast-cached
+    image: neuroevolution-python:fast
+    container_name: neuroevolution-dev
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: /bin/bash -c "tail -f /dev/null"  # 保持容器运行
+    stdin_open: true
+    tty: true
