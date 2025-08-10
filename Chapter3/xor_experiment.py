@@ -50,16 +50,19 @@ def eval_genomes(genomes, config):
     The provided configuration is used to create feed-forward 
     neural network from each genome and after that created
     the neural network evaluated in its ability to solve
-    XOR problem. As a result of this function execution, the
+    XOR problem. As a result of this function execution,
     the fitness score of each genome updated to the newly
     evaluated one.
-    提供的配置用来创建每个基因组的正向反馈网络，并且随后，评价他解决xor问题的能力。
+    提供的配置用来创建每个基因组的正向反馈网络，并且随后，创建评价他解决xor问题能力的进化网络。
+    作为这个函数的执行结果，每个基因组适应度分数更新至最新的那个。
     每个基因组的拟合度评分，更新到最新的那个值
     Arguments:
         genomes: The list of genomes from population in the 
                 current generation
+                当前代种群中的基因组 list
         config: The configuration settings with algorithm
                 hyper-parameters
+                带有 算法超参 的配置
     """
     for genome_id, genome in genomes:
         genome.fitness = 4.0
@@ -70,8 +73,10 @@ def run_experiment(config_file):
     """
     The function to run XOR experiment against hyper-parameters 
     defined in the provided configuration file.
+    针对配置文件中的超参数。 运行 XOR 实验
     The winner genome will be rendered as a graph as well as the
     important statistics of neuroevolution process execution.
+    获胜的基因组将会被渲染成一个图谱，同时也很重要的神经进化执行过程的统计数据
     Arguments:
         config_file: the path to the file with experiment 
                     configuration
@@ -85,9 +90,12 @@ def run_experiment(config_file):
     p = neat.Population(config)
 
     # Add a stdout reporter to show progress in the terminal.
+    # 添加  标准输出 报告器 用于 在控制台上显示 进度
     p.add_reporter(neat.StdOutReporter(True))
+    # 统计 统计信息 收集器
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
+    # 添加 检查点 收集器
     p.add_reporter(neat.Checkpointer(5, filename_prefix='out/neat-checkpoint-'))
 
     # Run for up to 300 generations.
@@ -97,6 +105,7 @@ def run_experiment(config_file):
     print('\nBest genome:\n{!s}'.format(best_genome))
 
     # Show output of the most fit genome against training data.
+    # 针对训练数据，显示 适应度最强的基因组
     print('\nOutput:')
     net = neat.nn.FeedForwardNetwork.create(best_genome, config)
     for xi, xo in zip(xor_inputs, xor_outputs):
@@ -104,6 +113,7 @@ def run_experiment(config_file):
         print("input {!r}, expected output {!r}, got {!r}".format(xi, xo, output))
 
     # Check if the best genome is an adequate XOR solver
+    # 确认 如果最优基因组是一个 "足够的" XOR 求解器
     best_genome_fitness = eval_fitness(net)
     if best_genome_fitness > config.fitness_threshold:
         print("\n\nSUCCESS: The XOR problem solver found!!!")
@@ -119,10 +129,14 @@ def run_experiment(config_file):
 def clean_output():
     if os.path.isdir(out_dir):
         # remove files from previous run
-        shutil.rmtree(out_dir)
-
+        import subprocess
+        try:
+            subprocess.run(['rm', '-rf', out_dir], check=False)
+        except:
+            pass
+    
     # create the output directory
-    os.makedirs(out_dir, exist_ok=False)
+    os.makedirs(out_dir, exist_ok=True)
 
 
 if __name__ == '__main__':
